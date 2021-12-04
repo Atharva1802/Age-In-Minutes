@@ -2,17 +2,74 @@
 <LinearLayout    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/AppBackgroundColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/age_in_minutes"
+        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:text="Get Your Age In Minutes"
         android:textColor="@color/Text_color"
         android:textSize="25sp"
         android:textStyle="bold" />
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:text="Select Date"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="@color/AgeBackgroundColor"
+        />
+
+    <TextView
+        android:id="@+id/tvSelectedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textColor="@color/ButtonBackgroundColor"
+        android:textSize="35sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="Selected Date"
+        android:textColor="@color/ButtonBackgroundColor"
+        android:textSize="25sp"
+        />
+
+    <TextView
+        android:id="@+id/tvDateInMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textColor="@color/ButtonBackgroundColor"
+        android:textSize="35sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="Age in Minutes"
+        android:textColor="@color/ButtonBackgroundColor"
+        android:textSize="25sp"
+        />
+
 
 </LinearLayout>
