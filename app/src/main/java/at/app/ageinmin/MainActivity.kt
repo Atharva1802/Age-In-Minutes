@@ -29,7 +29,12 @@ class MainActivity : AppCompatActivity() {
         DatePickerDialog(
             this,
             DatePickerDialog.OnDateSetListener {
-                    view, year, month, dayOfMonth ->
+                    view, selectedyear, selectedmonth, selecteddayOfMonth ->
+                Toast.makeText(this,
+                        "The chosen year is $selectedyear and month is $selectedmonth and Day is $selecteddayOfMonth",
+                        Toast.LENGTH_LONG).show()
+                val selectedDate = "$selecteddayOfMonth/${selectedmonth + 1} / $selectedyear"
+                tvSelectedDate.text = selectedDate
             },
             year,
             month,
