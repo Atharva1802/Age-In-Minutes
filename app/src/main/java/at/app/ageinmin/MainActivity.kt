@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,20 +22,26 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    fun clickDatePicker(view: View) {
-        val myCalender = Calendar.getInstance()
-        val year = myCalender.get(Calendar.YEAR)
+    fun clickDatePicker(view: View) {           // Intialized function for main activity
+        val myCalender = Calendar.getInstance() // .getInstace imports object calendar from class Calendar
+        val year = myCalender.get(Calendar.YEAR) // Further get(Calendar.xxxx) used
         val month = myCalender.get(Calendar.MONTH)
         val day = myCalender.get(Calendar.DAY_OF_MONTH)
-        DatePickerDialog(
+        DatePickerDialog(     // For Calendar     //A dialog is a small window that prompts the user
+                                                  // to make a decision or enter additional information.
             this,
-            DatePickerDialog.OnDateSetListener {
-                    view, selectedyear, selectedmonth, selecteddayOfMonth ->
-                Toast.makeText(this,
-                        "The chosen year is $selectedyear and month is $selectedmonth and Day is $selecteddayOfMonth",
-                        Toast.LENGTH_LONG).show()
-                val selectedDate = "$selecteddayOfMonth/${selectedmonth + 1} / $selectedyear"
-                tvSelectedDate.text = selectedDate
+            DatePickerDialog.OnDateSetListener {  // To show this Dialogue when DatePicker is clicked
+                    view, selectedYear, selectedMonth, selecteddayOfMonth -> //prompting a view
+
+
+                val selectedDate = "$selecteddayOfMonth/${selectedMonth + 1} / $selectedYear" // String
+                tvSelectedDate.text = selectedDate      // Feed in Text View tvSelectedDate
+
+                val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH) /* From class SimpleDateFormat */
+
+
+
+
             },
             year,
             month,
