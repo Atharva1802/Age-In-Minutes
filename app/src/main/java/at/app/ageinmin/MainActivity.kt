@@ -27,26 +27,30 @@ class MainActivity : AppCompatActivity() {
         val year = myCalender.get(Calendar.YEAR) // Further get(Calendar.xxxx) used
         val month = myCalender.get(Calendar.MONTH)
         val day = myCalender.get(Calendar.DAY_OF_MONTH)
-        DatePickerDialog(     // For Calendar     //A dialog is a small window that prompts the user
+       val dpd =  DatePickerDialog(     // For Calendar     //A dialog is a small window that prompts the user
                                                   // to make a decision or enter additional information.
             this,
             DatePickerDialog.OnDateSetListener {  // To show this Dialogue when DatePicker is clicked
-                    view, selectedYear, selectedMonth, selecteddayOfMonth -> //prompting a view
+                    view, selectedYear, selectedMonth, selectedDayOfMonth -> //prompting a view
 
 
-                val selectedDate = "$selecteddayOfMonth/${selectedMonth + 1} / $selectedYear" // String
+                val selectedDate = "$selectedDayOfMonth/${selectedMonth + 1} / $selectedYear" // String
                 tvSelectedDate.text = selectedDate      // Feed in Text View tvSelectedDate
 
-                val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH) /* From class SimpleDateFormat */
+                val sdf = SimpleDateFormat("dd/MM/yyyy") /* From class SimpleDateFormat */
 
+                val theDate = sdf.parse(selectedDate)
 
-
-
-            },
-            year,
-            month,
-            day,
-        ).show()
-
+                val selectedDateInMinutes = theDate!!.time / 60000
+                val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
+                val currentDateToMinutes = currentDate!!.time / 60000
+                val differenceInMinutes = currentDateToMinutes - selectedDateInMinutes
+                tvSelectedDateInMinutes.text = differenceInMinutes.toString()
+            }
+            ,year
+            ,month
+            ,day)
+        dpd.datePicker.setMaxDate(Date().time - 86400000)
+        dpd.show()
     }
 }
